@@ -2,8 +2,8 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IHC & Maldives Guest Book</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>IHC & Maldives Guest Book Event 2026</title>
     <link href="https://fonts.cdnfonts.com/css/glacial-indifference" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <style>
@@ -16,104 +16,101 @@
             font-family: 'Glacial Indifference', sans-serif;
             background-color: #f5f5f7;
             margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
         }
 
         .card {
-            width: 100%; max-width: 420px;
+            width: 90%; max-width: 420px;
             background-color: var(--bg-blue-full);
-            border-radius: 40px; padding: 40px 30px;
+            border-radius: 40px; padding: 40px 25px;
             box-shadow: 0 20px 50px rgba(0,0,0,0.15);
             text-align: center; color: white;
             box-sizing: border-box;
         }
 
-        /* LOGO HEADER FIX */
         .logo-header { 
-            display: flex; 
-            justify-content: center; 
-            align-items: center;
-            gap: 3px; 
-            margin-bottom: 3px; 
+            display: flex; justify-content: center; align-items: center;
+            gap: 15px; margin-bottom: 30px; 
         }
         
         .logo-box { 
-            width: 200px; 
-            height: 160px;
-            display: flex; 
-            justify-content: center; 
-            align-items: center;
+            width: 120px; height: 80px;
+            display: flex; justify-content: center; align-items: center;
         }
 
         .logo-box img { 
-            max-width: 100%; 
-            max-height: 100%; 
-            object-fit: contain; 
+            max-width: 100%; max-height: 100%; 
+            object-fit: contain; display: block;
         }
 
-        h2 { font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 35px; font-size: 32px; }
+        h2 { font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; font-size: 26px; }
 
-        /* FORM ALIGNMENT FIX */
-        .field-container { display: flex; flex-direction: column; gap: 20px; }
-        
-        .row { 
-            display: flex; 
-            flex-direction: row; 
+        /* FORM ALIGNMENT FIX (PAKAI GRID) */
+        .field-container { 
+            display: grid; 
+            grid-template-columns: 90px 1fr; /* Kolom kiri tetap 90px, kanan fleksibel */
             align-items: center; 
-            justify-content: space-between;
-            width: 100%;
+            row-gap: 20px; /* Jarak antar baris */
+            text-align: left;
         }
 
-        label { 
-            width: 100px; /* Lebar tetap agar teks di kiri rata */
-            font-size: 14px; 
+        label.input-label { 
+            font-size: 13px; 
             font-weight: 800; 
             text-transform: uppercase; 
-            text-align: left;
             color: white;
+            padding-right: 10px;
         }
         
-        input {
-            flex: 1; /* Mengambil sisa ruang */
-            padding: 16px 20px; 
-            border: none; 
-            border-radius: 15px;
-            font-size: 16px; 
-            font-family: 'Glacial Indifference', sans-serif;
-            box-sizing: border-box; 
-            color: #1d1d1f; 
-            background: #fff;
+        input[type="text"], input[type="tel"] {
+            width: 100%;
+            padding: 15px 20px; border: none; border-radius: 18px;
+            font-size: 16px; font-family: 'Glacial Indifference', sans-serif;
+            box-sizing: border-box; color: #1d1d1f; background: #fff;
+            -webkit-appearance: none;
         }
 
-        /* Row khusus WA agar tombol Verifikasi pas */
-        .wa-input-wrapper {
-            flex: 1;
+        /* Khusus baris Whatsapp agar tombol dan input sejajar */
+        .wa-row-content {
             display: flex;
-            gap: 10px;
+            gap: 8px;
+            width: 100%;
         }
 
         .btn-verify {
             background: white; color: var(--apple-blue); border: none;
-            padding: 0 15px; border-radius: 12px; font-weight: 800; cursor: pointer;
-            text-transform: uppercase; font-size: 12px;
-            height: 50px; /* Samakan dengan tinggi input */
+            padding: 0 15px; border-radius: 15px; font-weight: 800; cursor: pointer;
+            text-transform: uppercase; font-size: 11px; height: 50px;
+            flex-shrink: 0; /* Mencegah tombol menciut */
+            -webkit-tap-highlight-color: transparent;
         }
 
-        /* BUTTONS */
         .btn-action {
+            grid-column: span 2; /* Tombol ambil seluruh lebar grid */
             width: 100%; padding: 18px; background: #000; color: white;
-            border: none; border-radius: 16px; font-size: 16px; font-weight: 700;
+            border: none; border-radius: 18px; font-size: 16px; font-weight: 700;
             text-transform: uppercase; cursor: pointer; margin-top: 10px;
+            -webkit-tap-highlight-color: transparent;
         }
 
-        .agreement { display: flex; align-items: center; gap: 12px; margin: 25px 0; font-weight: 700; font-size: 14px; justify-content: center; }
+        .btn-action:disabled { background: #8ba2e7 !important; color: #fff !important; opacity: 0.7; }
+
+        .agreement-container {
+            grid-column: span 2;
+            display: flex; align-items: center; justify-content: center;
+            padding: 15px 0; gap: 12px; cursor: pointer;
+        }
+
+        .agreement-container input { width: 22px; height: 22px; cursor: pointer; }
+        .agreement-container span { font-weight: 700; font-size: 13px; }
         
-        /* GIFT BOX */
-        .gift-container { display: flex; justify-content: center; gap: 15px; margin: 30px 0; }
+        .gift-container { display: flex; justify-content: center; gap: 12px; margin: 25px 0; }
         .gift-box {
-            font-size: 40px; cursor: pointer; background: rgba(255,255,255,0.2);
+            font-size: 35px; cursor: pointer; background: rgba(255,255,255,0.2);
             width: 90px; height: 90px; display: flex; align-items: center; justify-content: center;
             border-radius: 20px; border: 2px dashed rgba(255,255,255,0.4);
         }
+
         .shuffle { animation: shake 0.5s infinite; }
         @keyframes shake {
             0% { transform: rotate(0deg); }
@@ -122,7 +119,7 @@
             100% { transform: rotate(0deg); }
         }
 
-        .hidden { display: none; }
+        .hidden { display: none !important; }
         #result-text { font-size: 22px; font-weight: 800; margin-top: 20px; }
     </style>
 </head>
@@ -131,43 +128,43 @@
 <div class="card">
     <div class="logo-header">
         <div class="logo-box">
-            <img src="https://lh3.googleusercontent.com/d/1njp0_DvILEDf0aFz3srVPoo6NRTakSIi" alt="Logo IHC">
+            <img src="https://i.imgur.com/dwvPj8p.png" alt="Logo IHC">
         </div>
         <div class="logo-box">
-            <img src="https://lh3.googleusercontent.com/d/1RiN521tN69IN19lLVrqfDceqnKfEncux" alt="Logo Maldives">
+            <img src="https://i.imgur.com/2YLVNZR.png" alt="Logo Maldives">
         </div>
     </div>
 
     <div id="step-1">
         <h2>Guest Book</h2>
         <div class="field-container">
-            <div class="row">
-                <label>Nama</label>
-                <input type="text" id="nama" placeholder="Full Name">
-            </div>
-            <div class="row">
-                <label>Instagram</label>
-                <input type="text" id="ig" placeholder="@username">
-            </div>
-            <div class="row">
-                <label>Whatsapp</label>
-                <div class="wa-input-wrapper">
-                    <input type="tel" id="hp" placeholder="081xxx" style="width: 60%;">
-                    <button class="btn-verify" onclick="submitStep1()">Verifikasi</button>
-                </div>
+            <label class="input-label">Nama</label>
+            <input type="text" id="nama" placeholder="Full Name" autocomplete="off">
+
+            <label class="input-label">Instagram</label>
+            <input type="text" id="ig" placeholder="@username" autocomplete="off">
+
+            <label class="input-label">Whatsapp</label>
+            <div class="wa-row-content">
+                <input type="tel" id="hp" placeholder="081xxx" autocomplete="off">
+                <button class="btn-verify" onclick="submitStep1()">Verifikasi</button>
             </div>
         </div>
     </div>
 
     <div id="step-2" class="hidden">
         <h2>Follow Us</h2>
-        <button class="btn-action" onclick="window.open('https://instagram.com/indo_collections')">Follow @indo_collections</button>
-        <button class="btn-action" onclick="window.open('https://instagram.com/maldives.legend')" style="background:#333">Follow @maldives.legend</button>
-        <label class="agreement">
-            <input type="checkbox" id="check-follow" onchange="document.getElementById('btn-lanjut').disabled = !this.checked">
-            <span>SAYA SUDAH FOLLOW KEDUANYA</span>
-        </label>
-        <button class="btn-action" id="btn-lanjut" style="background:#fff; color:var(--apple-blue)" onclick="showGifts()" disabled>LANJUT AMBIL KADO</button>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+            <button class="btn-action" style="grid-column: auto;" onclick="window.open('https://instagram.com/indo_collections', '_blank')">Follow @indo_collections</button>
+            <button class="btn-action" style="grid-column: auto; background:#333" onclick="window.open('https://instagram.com/maldives.legend', '_blank')">Follow @maldives.legend</button>
+            
+            <div class="agreement-container" onclick="toggleCheckbox()">
+                <input type="checkbox" id="check-follow" onclick="event.stopPropagation(); validateFollow()">
+                <span>SAYA SUDAH FOLLOW KEDUANYA</span>
+            </div>
+
+            <button class="btn-action" id="btn-lanjut" style="grid-column: auto; background:#fff; color:var(--apple-blue)" onclick="showGifts()" disabled>LANJUT AMBIL KADO</button>
+        </div>
     </div>
 
     <div id="step-3" class="hidden">
@@ -192,11 +189,30 @@
         const h = document.getElementById('hp').value;
         if(!n || !h) return alert("Isi data dulu!");
 
+        const waText = `Halo IHC, saya ${n} (IG: ${i}) sudah isi buku tamu.`;
+        const waLink = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(waText)}`;
+
+        const newWindow = window.open(waLink, '_blank');
+        if (!newWindow || newWindow.closed || typeof newWindow.closed == 'undefined') {
+            window.location.href = waLink;
+        }
+
         fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: new URLSearchParams({nama: n, instagram: i, nohp: h}) });
-        window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent('Halo IHC, saya '+n+' (IG: '+i+') sudah isi buku tamu.')}`, '_blank');
 
         document.getElementById('step-1').classList.add('hidden');
         document.getElementById('step-2').classList.remove('hidden');
+    }
+
+    function toggleCheckbox() {
+        const cb = document.getElementById('check-follow');
+        cb.checked = !cb.checked;
+        validateFollow();
+    }
+
+    function validateFollow() {
+        const cb = document.getElementById('check-follow');
+        const btn = document.getElementById('btn-lanjut');
+        btn.disabled = !cb.checked;
     }
 
     function showGifts() {
@@ -213,15 +229,19 @@
         const boxes = document.querySelectorAll('.gift-box');
         let r = Math.random() * 100;
         let hadiah = r < 50 ? "KIPAS" : (r < 90 ? "KEYCHAIN" : "MUG");
-
-        boxes[idx].innerHTML = `<span style="font-size:14px; color:#000;">${hadiah}</span>`;
+        
+        boxes[idx].innerHTML = `<span style="font-size:14px; color:#000; font-weight:bold;">${hadiah}</span>`;
         boxes[idx].style.background = "#fff";
         boxes.forEach((b, i) => { if(i !== idx) b.style.opacity = "0.3"; });
-
+        
         confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
         document.getElementById('result-text').innerText = "SELAMAT! DAPAT: " + hadiah;
 
-        fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: new URLSearchParams({instagram: document.getElementById('ig').value, hadiah: hadiah}) });
+        fetch(SCRIPT_URL, { 
+            method: 'POST', 
+            mode: 'no-cors', 
+            body: new URLSearchParams({instagram: document.getElementById('ig').value, hadiah: hadiah}) 
+        });
     }
 </script>
 </body>
