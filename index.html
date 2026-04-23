@@ -232,12 +232,17 @@
         
         boxes[idx].innerHTML = `<span style="font-size:14px; color:#000; font-weight:bold;">${hadiah}</span>`;
         boxes[idx].style.background = "#fff";
+      let sisaHadiah = ["MUG", "KEYCHAIN"];
+        let counter = 0;
+
+        // 2. Loop untuk mengisi kado-kado yang tidak dipilih
         boxes.forEach((b, i) => { 
             if(i !== idx) {
                 b.style.opacity = "0.4"; 
                 
-                let rFake = Math.random() * 100;
-                let hadiahFake = rFake < 50 ? "KEYCHAIN" : "MUG";
+                // Ambil hadiah dari daftar sisaHadiah satu per satu
+                let hadiahFake = sisaHadiah[counter];
+                counter++;
                 
                 b.innerHTML = `<span style="font-size:11px; color:#fff; font-weight:normal; opacity:0.8;">${hadiahFake}</span>`;
                 b.style.background = "rgba(255,255,255,0.1)"; 
