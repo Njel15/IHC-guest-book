@@ -228,11 +228,21 @@
         isPicked = true;
         const boxes = document.querySelectorAll('.gift-box');
         let r = Math.random() * 100;
-        let hadiah = r < 50 ? "KIPAS" : (r < 90 ? "KEYCHAIN" : "MUG");
+        let hadiah = r < 101 ? "KIPAS" : (r < 0 ? "KEYCHAIN" : "MUG");
         
         boxes[idx].innerHTML = `<span style="font-size:14px; color:#000; font-weight:bold;">${hadiah}</span>`;
         boxes[idx].style.background = "#fff";
-        boxes.forEach((b, i) => { if(i !== idx) b.style.opacity = "0.3"; });
+        boxes.forEach((b, i) => { 
+            if(i !== idx) {
+                b.style.opacity = "0.4"; 
+                
+                let rFake = Math.random() * 100;
+                let hadiahFake = rFake < 50 ? "KEYCHAIN" : "MUG";
+                
+                b.innerHTML = `<span style="font-size:11px; color:#fff; font-weight:normal; opacity:0.8;">${hadiahFake}</span>`;
+                b.style.background = "rgba(255,255,255,0.1)"; 
+            } 
+        });
         
         confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
         document.getElementById('result-text').innerText = "SELAMAT! DAPAT: " + hadiah;
