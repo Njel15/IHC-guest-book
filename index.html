@@ -228,7 +228,7 @@
         isPicked = true;
         const boxes = document.querySelectorAll('.gift-box');
         let r = Math.random() * 100;
-        let hadiah = r < 20 ? "MUG" : (r < 30 ? "KEYCHAIN" : "KIPAS");
+        let hadiah = r < 10 ? "MUG" : (r < 60 ? "KEYCHAIN" : "KIPAS");
 
     boxes[idx].innerHTML = `<span style="font-size:14px; color:#000; font-weight:bold;">${hadiah}</span>`;
     boxes[idx].style.background = "#fff";
